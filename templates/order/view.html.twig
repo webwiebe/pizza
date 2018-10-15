@@ -1,0 +1,56 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+    My order
+{% endblock %}
+
+{% block content %}
+    Single order:
+    <table>
+        <thead>
+        <tr>
+            <th>business</th>
+            <th>pizza bottom</th>
+            <th>pizza topping</th>
+            <th>status</th>
+            <th>update preference</th>
+            <th>price</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td>
+                {{ order.business.name }}
+            </td>
+            <td>
+                {{ order.pizza.bottom }}
+            </td>
+            <td>
+                {{ order.pizza.topping }}
+            </td>
+            <td>
+                {{ order.status }}
+            </td>
+            <td>
+                {{ order.updatePreference }}
+            </td>
+            <td>
+                {{ order.totalCost }}
+            </td>
+        </tr>
+        <tr>
+            <td colspan="6">
+                {% if order.business.takeOut and not order.business.delivery  %}
+                    your pizza will be available for takeout in half an hour
+                {% elseif order.business.delivery and not order.business.takeOut %}
+                    your pizza will be delivered when pigs fly
+                {% else %}
+                    businesses should select either delivery or takeout - for now this is a shortcoming in the datamodel.
+                {% endif %}
+            </td>
+        </tr>
+        </tbody>
+    </table>
+{% endblock %}
+
+

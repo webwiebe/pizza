@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}PizzaCase 1.0{% endblock %}
+
+{% block content %}
+    <div>
+        <h1>Order here</h1>
+        <a href="{{ path('order') }}">Order</a>
+
+        <h1>Manage orders here</h1>
+        <a href="{{ path('manage') }}">Manage</a>
+    </div>
+{% endblock %}

@@ -1,0 +1,46 @@
+{% extends 'base.html.twig' %}
+
+{% block content %}
+    All orders:
+    <table>
+        <thead>
+        <tr>
+            <th>business</th>
+            <th>pizza bottom</th>
+            <th>pizza topping</th>
+            <th>status</th>
+            <th>update preference</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for order in orders %}
+            <tr>
+                <td>
+                    {{ order.business.name }}
+                </td>
+                <td>
+                    {{ order.pizza.bottom }}
+                </td>
+                <td>
+                    {{ order.pizza.topping }}
+                </td>
+                <td>
+                    {{ order.status }}
+                </td>
+                <td>
+                    {{ order.updatePreference }}
+                </td>
+                <td>
+                    <a href="{{ path('order_finish',{order:order.id  | default('')}) }}">finish order</a>
+                    <a href="{{ path('order_view',{order:order.id  | default('')}) }}">view</a>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}
+
+{% block title %}
+    Order overview
+{% endblock %}
+
